@@ -1,21 +1,19 @@
 const OpenAI = require("openai");
+// import OpenAI from "openai";
 require("dotenv").config();
-
-// const configuration = new Configuration({
-//   apiKey: process.env.openai,
-// });
 
 const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
-  organization: "org-FkFolYmTDS6JpLbGGMeV8cqi",
+  organization: "org-gVxEu0LsuKlxdxYAsdk7Wj0v",
 });
 
 module.exports = {
   async say(instruction) {
     try {
       return await openai.completions.create({
-        model: "gpt-3.5-turbo-instruct",
+        model: "text-davinci-003",
         prompt: instruction,
+        max_tokens: 1024,
         temperature: 0,
       });
     } catch (error) {

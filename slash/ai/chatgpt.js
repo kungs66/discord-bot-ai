@@ -9,13 +9,13 @@ const chatgpt = require("../../openai/chatgpt");
 
 module.exports = {
   name: "chatgpt",
-  description: "Get a response from ChatGPT!",
+  description: "Tanya ke pusatnya!",
   type: ApplicationCommandType.ChatInput,
   cooldown: 3000,
   options: [
     {
       name: "prompt",
-      description: "The prompt for ChatGPT!",
+      description: "Tanya ke pusatnya!",
       type: ApplicationCommandOptionType.String,
       required: true,
     },
@@ -45,8 +45,9 @@ module.exports = {
 
         chatgpt.say(prompt).then((completion) => {
           console.log(completion.choices);
+          console.log(completion);
           return interaction.editReply({
-            content: completion.choices[0].text,
+            content: `jawaban sudah di temukan oleh pusat : ${completion.choices[0].text}`,
           });
         });
 
